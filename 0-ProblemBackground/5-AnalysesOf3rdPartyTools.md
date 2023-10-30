@@ -1,0 +1,59 @@
+# Analyses of 3rd party tools
+
+## Labelling platforms
+
+|                 | [Wildlife Insights](https://www.wildlifeinsights.org/)                                                   | [TrapTagger](https://wildeyeconservation.org/traptagger/)                                       | [Trapper](https://gitlab.com/trapper-project/trapper)                                                                     |
+| --------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Deployment      | SaaS                                                                                                     | SaaS                                                                                            | Self-hosted                                                                                                               |
+| Scalability     | -                                                                                                        | -                                                                                               | Python + celery                                                                                                           |
+| License         | Proprietary                                                                                              | Open Source                                                                                     | Open-source                                                                                                               |
+| Handle video    | ❌                                                                                                       | ❌                                                                                              | ✅                                                                                                                        |
+| Handle photo    | ✅                                                                                                       | ✅                                                                                              | ✅                                                                                                                        |
+| API             | ✅                                                                                                       | ✅                                                                                              | ✅                                                                                                                        |
+| Manual upload   | ✅                                                                                                       | ✅                                                                                              | ✅                                                                                                                        |
+| Data input      | Via [Google Cloud Platform (GCP)](https://www.wildlifeinsights.org/get-started/upload/bulk-data-uploads) | Via [Via Amazon S3](https://youtu.be/9vH9rHPnoxk?list=PLz-q4hjV3X_YfKdix0LKovQNyANuZc0-R&t=137) | Via FTP                                                                                                                   |
+| Deployment info | -                                                                                                        | -                                                                                               | There is no Docker image ready (but there is a Dockerfile), some adjustments in the original repository are necessary [1] |
+|                 |
+| Assumptions     | - Data output is the same as data input                                                                  | - Data output is the same as data input                                                         | - Data output is the same as data input                                                                                   |
+
+[1] Need AZURE to run with cloud-based storage
+
+## Training tools
+
+|                    | [Roboflow](https://roboflow.com/)                                                                                                     | [EdgeImpulse](https://edgeimpulse.com/)                         | [TensorFlow Lite](https://www.tensorflow.org/lite)                                                                                                                                                                                                                           |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Solution           | SaaS                                                                                                                                  | SaaS                                                            | Framework                                                                                                                                                                                                                                                                    |
+| Dataset management | ✅: different data itegration sources [here](https://roboflow.com/integrations/data) including S3                                     | ✅ : built-in & 3rd party [1]                                   | ❌ [TFDataset](https://www.tensorflow.org/datasets): additional lib for dataset storage formating, for management consider [DVC](https://dvc.org/), for integration with S3 and other [cloud storage formats](https://dvc.org/doc/user-guide/data-management/remote-storage) |
+| Dataset labeling   | ✅: on platform labeling [here](https://roboflow.com/annotate) as well as integrations [here](https://roboflow.com/integrations/data) | ⚖️ : Built-in for object detection in images only               | ❌ : Needs integration with 3rd parties                                                                                                                                                                                                                                      |
+| Model training     | ✅: built-in [here](https://roboflow.com/train)                                                                                       | ✅: built-in                                                    | ❌: For training models use [TensorFlow](https://www.tensorflow.org/)                                                                                                                                                                                                        |
+| Model management   | ✅: built-in versioning and re-training                                                                                               | ✅ : built-in versioning and re-training                        | ❌ : Consider [DVC Model Registry](https://dvc.org/doc/use-cases/model-registry) or [MLFlow](https://mlflow.org/)                                                                                                                                                            |
+| Model deployment   | ✅: different deployment targets ([here](https://roboflow.com/deploy) and [here](https://roboflow.com/integrations/deployment))       | ✅ (+ optimization for edge: export to different architectures) | ✅ : Convert the model into an efficient format for edge compute; supported targets can be found [here](https://www.tensorflow.org/lite/microcontrollers)                                                                                                                    |
+
+[1] [Edge Impulse](https://edgeimpulse.com/) : Dataset management
+
+- A storage bucket in the cloud (S3 compatible)
+- Organizational dataset (platform-hosted repository)
+
+[2] [Edge Impulse](https://edgeimpulse.com/) : Model deployment
+
+- Wide range of supported targets + custom integrations for Enterprise
+
+---
+
+## Publishing platforms
+
+### [iNaturalist](https://www.inaturalist.org/)
+
+- Integration can be done using API
+  - **API reference:** [https://www.inaturalist.org/pages/api+reference#auth](https://www.inaturalist.org/pages/api+reference#auth)
+  - **Protocol:** HTTPS
+  - **Authentication:** 3rd party authentication
+  - Images can be uploaded via HTTPS
+
+### [GBIF](https://www.gbif.org/)
+
+- Integration can be done using API
+  - **API reference:** [https://www.gbif.org/developer/summary](https://www.gbif.org/developer/summary)
+  - **Protocol:** HTTPS
+  - **Authentication:** basic auth (`user:password`)
+  - Images can be uploaded via HTTPS
