@@ -1,12 +1,10 @@
 # Proposed Scenarios
 
----
-
-Given an overview of user actions.
-
 ## User
 
 ### Login
+
+User login flow to access the platform.
 
 ```mermaid
 flowchart TD
@@ -20,7 +18,7 @@ flowchart TD
 
 ### Update camera config
 
-See `Camera lifecycle`
+Update camera configuration if existing or register a new camera if missing.
 
 ```mermaid
 flowchart TD
@@ -187,8 +185,7 @@ If the camera is operating in the “capture” mode, the SD card will store vid
 flowchart TD
     Movement(Movement sensor)
     ML(Run machine learning model)
-    SaveSD[(Save to SD card
-            Metadata + Data)]
+    SaveSD[Save to SD card / Metadata + Data]
     CheckSettings(Check notification settings)
     SendNotification(Send notification)
     EndCycle[End detection cycle]
