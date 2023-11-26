@@ -2,7 +2,6 @@
 
 <img src="./images/logo.png" alt="drawing" width="200"/>
 
-
 This repository contains CELUS Ceals team's submission to O'Reilly's [Architectural Katas: Fall 2023](https://www.oreilly.com/live-events/architectural-katas-fall-2023/0636920097709/0636920097708/).
 
 ---
@@ -71,8 +70,8 @@ This repository contains CELUS Ceals team's submission to O'Reilly's [Architectu
 
 ## Resource
 
-- [2021 Architecture Katas Presentation](./5.Resource/20231019kickfinalslidedeck1697295113824.pdf)
-- [2021 Kata Participating Teams Info](./5.Resource/wildlifewatcherkata1697552884552.pdf)
+- [2023 Architecture Katas Presentation](./5.Resource/20231019kickfinalslidedeck1697295113824.pdf)
+- [2023 Kata Participating Teams Info](./5.Resource/wildlifewatcherkata1697552884552.pdf)
 
 ---
 
