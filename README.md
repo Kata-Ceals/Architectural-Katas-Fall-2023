@@ -1,8 +1,14 @@
-# Architectural-Katas-Fall-2023
+# 🥇 CELUS Ceals - Architectural Katas Fall 2023
 
 <img src="./images/logo.png" alt="drawing" width="200"/>
 
 This repository contains CELUS Ceals team's submission to O'Reilly's [Architectural Katas: Fall 2023](https://www.oreilly.com/live-events/architectural-katas-fall-2023/0636920097709/0636920097708/).
+
+---
+
+<img src="./images/badge.png" width="100" height="100"/>
+
+1st Place of the O'Reilly Architecture Katas Fall 2023
 
 ---
 
